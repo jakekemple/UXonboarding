@@ -1,0 +1,66 @@
+
+*{
+	padding:3px;
+	margin: 0;
+}
+
+html{
+
+	background-color: #222;
+	color: white;
+	min-width: 570px;
+
+}
+
+a{
+	text-decoration: none;
+	color:white;
+}
+
+a:hover{
+	color:#104e8b;
+}
+
+h1{
+	font-size: 2.5em;
+	right:0;
+	text-align: right;
+	font-family: sans-serif;
+
+}
+
+h2{
+	font-size: 2em;
+}
+
+.userInfo{
+	margin-right: auto;
+	display: table;
+	position: relative;
+	font-family: sans-serif;
+}
+
+#usernameDiv{
+	/*margin-top: 5%;*/
+	cursor: pointer;
+}
+
+#listInfo{
+text-align: left;
+display: inline-block;
+font-size: 1.5em;
+}
+
+.userData{
+	display: inline-block;
+}
+
+#showhide{
+	position:absolute; 
+	padding-left:15px; 
+	width:31px; 
+	color:white;
+}
+
+
+
