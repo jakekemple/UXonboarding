@@ -1,2 +1,0 @@
-# UXonboarding
-UX Onboarding Project
