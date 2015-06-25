@@ -1,0 +1,36 @@
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="js/minimize.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$("#clearBtn").click(function(){
+			$("#realInput").click();
+		});
+		
+	});
+</script>
+
+<div ng-controller="AddUserController">
+	<div  class="userInfo" style="width:60%;">
+
+		<div class="userInfo" style="margin-left:auto;" id="usernameDiv">
+			<h2 id="username">Add New User:</h2>
+			<br/>
+		</div>
+	
+		<div id="listInfo" style="display:inherit; width:85%; text-align:center; margin:auto;">
+	
+			<form style="display:table-caption; width:97%;" ng-controller="AddUserController">
+				<input type="text" placeholder= "First Name" ng-model="newUser.firstName"></input>
+				<input type="text" placeholder= "Last Name" ng-model="newUser.lastName"></input>
+				<input type="text" placeholder= "Phone Number" ng-model="newUser.phone"></input>
+				<input type="text" placeholder= "Email" style="margin-left:5px;" ng-model="newUser.email"></input>
+				<input id="realInput" style="display:none;" type="reset" value="Reset" href=""/>
+				<br/><br/>
+				<a type="submit"  style="cursor:pointer; margin-left:-5px;" ui-sref="UsersList" ng-click="addNew(newUser)">Submit</a><a href=""  id="clearBtn" style="padding-left:15px;">Clear</a>
+			</form>
+
+		</div>
+
+	</div>
+</div>
