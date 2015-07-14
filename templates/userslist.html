@@ -16,7 +16,7 @@
 			<ul style="list-style-type: none;">
 				<li ng-repeat="user in usersList">
 				
-					<p class="userData"><a style="cursor:pointer;" ng-click="profilePopulate(user)" ng-model="user.firstName" ui-sref="UserProfile"><list-card data="user"></list-card></a></p>
+					<p class="userData"><a style="cursor:pointer;" ng-click="profilePopulate(user)" ng-model="user.firstName" ui-sref="UserProfile({id: user._id})"><list-card data="user"></list-card></a></p>
 					<br/>
 
 				</li>

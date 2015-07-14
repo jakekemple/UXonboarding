@@ -12,11 +12,12 @@ This App allows for load-free, viewing of a users list, profiles of each user, a
 - NPM/Node.js
 - Grunt
 - MongoDB
+- Karma/Protractor/Jasmine
 
 
 ###What works now:
 
-Page layout(html/css), jquery minimize, 'grunt connect' works to create local server instance, Node/NPM installed, User List &amp; Profile populates from MongoDB local database, &amp; dynamic editing and removal of users   
+Page layout(html/css), jquery minimize, 'grunt connect' works to create local server instance, Node/NPM installed, User List &amp; Profile populates from MongoDB local database, &amp; dynamic editing and removal of users, Add Users function working and updating DB, Karma-Jasmine Unit Tests written for functions & successfully passing 
 
 
 ###Steps to view demo:
@@ -27,4 +28,9 @@ Page layout(html/css), jquery minimize, 'grunt connect' works to create local se
 - run the command "grunt connect"
 - A live demo should be open in your browser
 
-### NOTE: Still in developmental stages
+###To Run Unit Tests:
+- In terminal from the project root folder, run "node_modules/.bin/karma start karma.conf.js"
+- View Passed Tests
+
+
+### NOTE: Still in end-to-end testing phase
