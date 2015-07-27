@@ -117,6 +117,7 @@ UsersApp.controller('UserEditController', function($scope, $state, $stateParams,
           //var currentUser = $scope.currentUser;
           
         changedUser.email = $scope.usersList[$scope.selectedUser].email;
+        changedUser._id = $scope.usersList[$scope.selectedUser]._id;
         $scope.currentUser = changedUser;
 
         dataResources.update({ id: $scope.currentUser._id } ,$scope.currentUser).$promise.then(function(results) {
