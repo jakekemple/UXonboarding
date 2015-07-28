@@ -1,13 +1,10 @@
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="app/minimize.js"></script>
-
 <div ng-controller="UserProfileController">
 
 	<div class="userInfo" id="usernameDiv">
-		<h2 id="username">{{ usersList[selectedUser].firstName }}<img id="showhide" src="images/plus.png" style="position:absolute; padding-left:15px; width:31px; color:white;"></h2>
+		<h2 id="username">{{ usersList[selectedUser].firstName }}<img ng-click="infoToHide = !infoToHide" src="images/plus.png" style="position:absolute; padding-left:15px; width:31px; color:white;"></h2>
 	</div>
 
-	<div class="userInfo" id="infoToHide">
+	<div class="userInfo" ng-hide="infoToHide">
 		
 		<contact-card data="usersList[selectedUser]"></contact-card>
 		<br/><br/>

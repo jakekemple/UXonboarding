@@ -4,7 +4,7 @@ UsersApp.directive('contactCard', function() {
 			scope: {
 				data: '='
 			},
-			templateUrl: "templates/contactCard.html",
+			templateUrl: "../../partials/contactCard.html",
 			controller: function($scope, userService, dataResources) {
 
 			}

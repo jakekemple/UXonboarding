@@ -2,7 +2,7 @@
 
 module.exports = function(grunt) {
   var filepaths = {
-      public: './',
+      public: 'src/',
   };
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),

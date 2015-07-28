@@ -1,66 +1,4 @@
 
-//MODULE ---------------------------------------
-var UsersApp = angular.module('UsersApp', ['ui.router', 'ngResource']);
-
-
-
-//SERVICES ---------------------------------------
-UsersApp.factory('dataResources', [ '$resource', function($resource) {
-
-  return $resource('http://localhost:24149/users/:id', {id: "@_id"}, {
-    query: {method:'GET', params:{idnum: '@id'}, isArray:true},
-    create: {method:'POST', headers: { 'Content-Type': 'application/json' }},
-    update: {method:'PUT', params:{idnum: '@id'}},
-    remove: {method:'DELETE', params:{idnum:'@id'}, isArray:true},
-  });
-
-}]);
-
-
-UsersApp.service('userService', function(dataResources, $stateParams) {
-
-var selectedUser = -1;
-
-return {
-      usersList: dataResources.query(),
-      selectedUser: selectedUser      
-    }
-
-});
-
-
-//ROUTING ---------------------------------------
-UsersApp.config(function($stateProvider, $urlRouterProvider) {
-    
-    $urlRouterProvider.otherwise('/List');
-
-    $stateProvider
-      
-      .state('UserProfile', {
-        url: "/UserProfile/:id",
-        templateUrl: 'templates/userprofile.html',
-      })
-
-      .state('UserEdit', {
-        url: "/Edit/:id",
-        templateUrl: 'templates/editprofile.html',
-      })
-
-      .state('List', {
-        url: '/List',
-        templateUrl: 'templates/userslist.html',
-      })
-
-      .state('AddUser', {
-        url: '/Add',
-        templateUrl: 'templates/adduser.html',
-      })
-
-      //$locationProvider.html5Mode(true);
-
-});
-
-
 
 //CONTROLLERS ---------------------------------------
 UsersApp.controller('UserListController', [ '$scope', 'userService', function($scope, userService, $stateParams) {  
@@ -77,7 +15,11 @@ UsersApp.controller('UserListController', [ '$scope', 'userService', function($s
 }]);
 
 
-UsersApp.controller('UserProfileController', [ '$scope', '$stateParams', 'userService', 'dataResources',  function($scope, $stateParams, userService, dataResources) {  
+UsersApp.controller('UserProfileController', [ '$scope', '$state', '$stateParams', 'userService', 'dataResources',  function($scope, $state, $stateParams, userService, dataResources) {  
+
+      if(userService.selectedUser == -1){
+        $state.go('List');
+      }
 
   $scope.selectedUser = userService.selectedUser;
   $scope.usersList = userService.usersList;
@@ -96,7 +38,12 @@ UsersApp.controller('UserProfileController', [ '$scope', '$stateParams', 'userSe
 
 
 UsersApp.controller('UserEditController', function($scope, $state, $stateParams, $window, dataResources, userService) {  
-      var phoneFormat =  /^\d{3}-\d{3}-\d{4}$/;
+
+      if(userService.selectedUser == -1){
+        $state.go('List');
+      }
+
+      //var phoneFormat =  /^\d{3}-\d{3}-\d{4}$/;
 
       $scope.usersList = userService.usersList;
       $scope.selectedUser = userService.selectedUser; 
@@ -106,13 +53,13 @@ UsersApp.controller('UserEditController', function($scope, $state, $stateParams,
   
       $scope.editUser = function editUser(changedUser) {
 
-        if ( changedUser == null || changedUser.firstName == null || changedUser.lastName == null || changedUser.phone == null){
-          alert("All form fields must be correctly filled out");
-        }
-        else if(phoneFormat.test(changedUser.phone) == false) {
-          alert("I know your trying to hack. Stop it");
-        }
-        else{
+        //if ( changedUser == null || changedUser.firstName == null || changedUser.lastName == null || changedUser.phone == null){
+         // alert("All form fields must be correctly filled out");
+        //}
+        //else if(phoneFormat.test(changedUser.phone) == false) {
+         // alert("I know your trying to hack. Stop it");
+        //}
+        //else{
           $scope.currentUser = $scope.usersList[$scope.selectedUser];
           //var currentUser = $scope.currentUser;
           
@@ -126,9 +73,9 @@ UsersApp.controller('UserEditController', function($scope, $state, $stateParams,
 
         alert('SUCCESS!');
 
-        $state.go('UserProfile', {id: $scope.usersList[$scope.selectedUser]._id}); ///UserProfile/:id
+        $state.go('UserProfile', {id: $scope.usersList[$scope.selectedUser]._id});
 
-        }
+        //}
     };
 
 });
@@ -152,14 +99,7 @@ UsersApp.controller('AddUserController', function($scope, $window, $state, dataR
     }
     else{
 
-      var firstName = newUser.firstName;
-      var lastName = newUser.lastName;
-      var phone = newUser.phone;
-      var email = newUser.email;
-
-      $scope.newUserData = { firstName, lastName, phone, email }
-
-      dataResources.create($scope.newUserData, function(data) {
+      dataResources.create(newUser, function(data) {
         $scope.usersList.push(data);
       });
 
@@ -170,10 +110,3 @@ UsersApp.controller('AddUserController', function($scope, $window, $state, dataR
   };
     
 });
-
-
-
-
-
-
-

@@ -17,8 +17,17 @@ a{
 	transition: .5s all;
 }
 
+
 a:hover{
 	font-size: 1.8em;
+}
+
+div.userInfo a {
+  -webkit-transition: .5s all;
+}
+
+div.userInfo a:hover {
+  font-size: 1.8em;
 }
 
 h1{

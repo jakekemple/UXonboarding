@@ -17,15 +17,15 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'js/angular.js'},
-      {pattern: 'js/angular-route.js'},
-      {pattern: 'js/angular-ui.js'},
-      {pattern: 'js/angular-resource.js'},
-      {pattern: 'js/angular-mocks.js'},
-      {pattern: 'app/app.js'},
-      {pattern: 'test/unit/**/*.js'},
-      {pattern: 'templates/**/*.html'},
-      {pattern: 'index.html', included:false},
+      {pattern: '../../src/js/angular.js'},
+      {pattern: '../../src/js/angular-route.js'},
+      {pattern: '../../src/js/angular-ui.js'},
+      {pattern: '../../src/js/angular-resource.js'},
+      {pattern: '../../src/js/angular-mocks.js'},
+      {pattern: '../../src/js/app.js'},
+      {pattern: 'unit/**/*.js'},
+      {pattern: '../../src/partials/**/*.html'},
+      {pattern: '../../src/index.html', included:false},
     ],
 
 
@@ -43,7 +43,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'templates/**/*.html': ['ng-html2js']
+        '../../src/partials/**/*.html': ['ng-html2js']
     },
 
     ngHtml2JsPreprocessor: {

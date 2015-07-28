@@ -1,4 +1,3 @@
-
 var user = {_id:0001, firstName: 'Random', lastName: 'Person', phone: '000-000-0000', email: 'rando@test.com'};
 var user2 = {_id:0002, firstName: 'Joe', lastName: 'Shmo', phone: '111-111-1111', email: 'rando2@test.com'};
 var users = [user, user2];
@@ -45,7 +44,7 @@ afterEach(function() {
 
 			it('Should do GET request from server', function() {
 				$httpBackend.expect('GET', 'http://localhost:24149/users').respond(users);
-				$httpBackend.expect('GET', 'templates/userslist.html').respond();
+				$httpBackend.expect('GET', '../partials/userslist.html').respond();
 				userService.usersList;
 				$httpBackend.flush();
 				expect($scope.usersList[0]._id).toEqual(user._id);
@@ -86,9 +85,9 @@ afterEach(function() {
 
 				$httpBackend.expect('PUT', 'http://localhost:24149/users/1').respond();
 
+				$httpBackend.expect('GET', '../partials/userslist.html').respond();
+				$httpBackend.expect('GET', '../partials/userprofile.html').respond();
 				
-				$httpBackend.expect('GET', 'templates/userprofile.html').respond();
-				$httpBackend.expect('GET', 'templates/userslist.html').respond();
 				$scope.editUser($scope.newuserEditTest);
 				
 				$httpBackend.flush();
@@ -112,8 +111,8 @@ afterEach(function() {
 			
 			$httpBackend.expect('GET', 'http://localhost:24149/users').respond();
 
-			$httpBackend.expect('POST', 'http://localhost:24149/users').respond();
-			$httpBackend.expect('GET', 'templates/userslist.html').respond();
+			$httpBackend.expect('POST', 'http://localhost:24149/users/2').respond();
+			$httpBackend.expect('GET', '../partials/userslist.html').respond();
 			$scope.addNew(user2);
 			$httpBackend.flush();
 			expect($scope.usersList[0].firstName).toEqual(user2.firstName);
@@ -140,7 +139,7 @@ afterEach(function() {
 				dump("DELETE SUCCESS: usersList size went from " + $scope.usersList.length);
 				
 				$httpBackend.expect('DELETE', 'http://localhost:24149/users/1').respond();
-				$httpBackend.expect('GET', 'templates/userslist.html').respond();
+				$httpBackend.expect('GET', '../partials/userslist.html').respond();
 				$scope.deleteUser(user);
 				$httpBackend.flush();
 				dump("to " + $scope.usersList.length);
@@ -155,7 +154,7 @@ afterEach(function() {
 	describe('UserListController: Selected User Test', function() {
 		
 		beforeEach(function() {
-			$httpBackend.whenGET('templates/userslist.html').respond();
+			$httpBackend.whenGET('../partials/userslist.html').respond();
 		});
 
 		it('Should do DELETE request and update server', function() {
@@ -165,7 +164,7 @@ afterEach(function() {
 			$scope.usersList[1] = user2;
 			
 			$httpBackend.expect('GET', 'http://localhost:24149/users').respond();
-			$httpBackend.expect('GET', 'templates/userslist.html').respond();
+			$httpBackend.expect('GET', '../partials/userslist.html').respond();
 			$scope.profilePopulate(user2);
 			$httpBackend.flush();
 
@@ -176,8 +175,3 @@ afterEach(function() {
 	});
 
 	//FUNCTION TESTS --------------------------------------------------------------------------------
-
-	
-
-
-
