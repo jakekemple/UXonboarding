@@ -1,26 +1,26 @@
 
-<div ng-controller="AddUserController">
-	<div  class="userInfo" style="width:60%;">
+<div ng-controller="AddUserController" >
+	<div  class="userInfo greyMat" style="margin-left:auto; margin-right:auto; width:95%;">
 
-		<div class="userInfo" style="margin-left:auto;" id="usernameDiv">
+		<div class="userInfo" style="margin:auto;" id="usernameDiv">
 			<h2 id="username">Add New User:</h2>
 			<br/>
 		</div>
 	
-		<div id="listInfo" style="display:inherit; width:85%; text-align:center; margin:auto;">
+		<div id="listInfo" style="display:inherit; width:100%; text-align:center; margin:auto;">
 	
-			<form id="addForm" style="display:table-caption; width:97%;" ng-controller="AddUserController" onsubmit="" method="post">
-				<input name="fname" type="text" placeholder= "First Name" ng-model="newUser.firstName" capitalize-first required></input>
-				<input name="lname" type="text" placeholder= "Last Name" ng-model="newUser.lastName" required></input>
-				<input id="phoneIn" name="phoneIn" type="tel" placeholder= "Phone Number" ng-model="newUser.phone" pattern="^\d{3}-\d{3}-\d{4}$" required></input><br/>
-				<input name="mailIn" type="email" placeholder= "Email" style="margin-left:5px;" ng-model="newUser.email" required></input>
-				<br/>
+			<form id="addForm" name="addForm" style="display:table-caption; width:99%;" ng-controller="AddUserController" onsubmit="" method="post">
+				<input name="fname" type="text" placeholder= "First Name" ng-model="newUser.firstName" capitalize-first required></input><br/>
+				<input name="lname" type="text" placeholder= "Last Name" ng-model="newUser.lastName" required></input><br/>
+				<p for="phoneIn" style="font-size:1em; margin-left:370px;"><input id="phoneIn" name="phoneIn" type="tel" placeholder= "Phone Number" ng-model="newUser.phone" pattern="^\d{3}-\d{3}-\d{4}$" required></input> *Phone# Format: XXX-XXX-XXXX</p>
+				<p for="mailIn" style="font-size:1em; margin-left:280px;"><input name="mailIn" type="email" placeholder= "Email" style="margin-left:5px;" ng-model="newUser.email" required></input> *Email Format: __@__.__</p>
+				
 				<input id="realInput" style="" type="reset" value="Reset" href=""/>
 				<br/>
-				<label for="phoneIn" style="font-size:16px;">*Phone# Format: XXX-XXX-XXXX</label><br/>
-				<label for="mailIn" style="font-size:16px;">*Email Format: __@__.__</label>
-				<br/><br/>
-				<a type="submit"  style="cursor:pointer; margin-left:-5px;" id="submitBtn" ng-click="addNew(newUser)">Submit</a><!--<a href=""  id="clearBtn" style="padding-left:15px;">Clear</a>-->
+
+				<div ng-if="addForm.phoneIn.$invalid || addForm.fname.$invalid || addForm.lname.$invalid || addForm.mailIn.$invalid" style="color:#FF4A44;">All form fields must be complete</div>
+
+				<a type="submit"  style="cursor:pointer; margin-left:-5px;" id="submitBtn" ng-click="addNew(newUser)" ng-hide="addForm.phoneIn.$invalid || addForm.fname.$invalid || addForm.lname.$invalid || addForm.mailIn.$invalid">Submit</a>
 			</form>
 
 		</div>

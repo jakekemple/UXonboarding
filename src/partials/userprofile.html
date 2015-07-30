@@ -1,16 +1,19 @@
 <div ng-controller="UserProfileController">
 
 	<div class="userInfo" id="usernameDiv">
-		<h2 id="username">{{ usersList[selectedUser].firstName }}<img ng-click="infoToHide = !infoToHide" src="images/plus.png" style="position:absolute; padding-left:15px; width:31px; color:white;"></h2>
+		<h2 id="username">{{ usersList[selectedUser].firstName }}<img ng-click="infoToHide = !infoToHide" src="images/plus.png" style="position:absolute; padding-left:15px; width:28px; color:white;"></h2>
 	</div>
 
 	<div class="userInfo" ng-hide="infoToHide">
 		
 		<contact-card data="usersList[selectedUser]"></contact-card>
 		<br/><br/>
-		<a class="userProfBtn" style="cursor:pointer; margin-left:3px; font-size:1.5em;" ui-sref="UserEdit({id: usersList[selectedUser]._id})">Edit User</a>
+
+		<div class="transBtn">
+		<a class="userProfBtn" style="cursor:pointer; margin-left:3px; " ui-sref="UserEdit({id: usersList[selectedUser]._id})">Edit User</a>
 		
-		<a class="userProfBtn" ng-click="deleteUser(usersList[selectedUser])" ui-sref="List" style="padding-left:40px; cursor:pointer; font-size:1.5em;">Delete User</a>
+		<a class="userProfBtn" ng-click="deleteUser(usersList[selectedUser])" ui-sref="List" style="padding-left:40px; cursor:pointer; ">Delete User</a>
+		</div>
 
 	</div>
 

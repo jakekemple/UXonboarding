@@ -10,20 +10,21 @@
 			
 			<form ng-controller="UserEditController" name="editForm">
 				<p class="userData">First Name: <input name="fnameIn" placeholder= "{{ usersList[selectedUser].firstName }}" ng-model="changedUser.firstName" required></input></p>
-				<p class="userData">Last Name: <input name="lnameIn" placeholder= "{{ usersList[selectedUser].lastName }}" ng-model="changedUser.lastName" required></input></p>
-				<p style="margin-left:46px;" class="userData">Phone: <input name="phoneIn" type="tel" pattern="^\d{3}-\d{3}-\d{4}$" placeholder= "{{ usersList[selectedUser].phone }}" ng-model="changedUser.phone" required="required"></input></p>
-				
-				<!--
-				<p class="userData" style="font-size:14px; margin-left:130px;">* A users email can't be changed</p>
-				<label for="phoneIn" style="font-size:14px; margin-left:130px;">* Phone# Format: XXX-XXX-XXXX</label><br/> -->
 
-				<div>* A users email can't be changed</div>
-				<div>* Phone# Format: XXX-XXX-XXXX</div>
-				<div ng-if="editForm.phoneIn.$invalid || editForm.fnameIn.$invalid || editForm.lnameIn.$invalid">All form fields must be complete</div>
+				<p class="userData">Last Name: <input name="lnameIn" placeholder= "{{ usersList[selectedUser].lastName }}" ng-model="changedUser.lastName" required></input></p>
+				
+				<p style="margin-left:46px;" class="userData">Phone: <input name="phoneIn" type="tel" pattern="^\d{3}-\d{3}-\d{4}$" placeholder= "{{ usersList[selectedUser].phone }}" ng-model="changedUser.phone" required="required"></input> *Format: XXX-XXX-XXXX</p>
+
+				<p style="margin-left:55px;" class="userData">Email: <input name="mailIn" readonly="readonly" placeholder="{{ usersList[selectedUser].email }}" style=" width:180px; border:none; box-shadow:none; -webkit-box-shadow:none; font-size:1em;"></input> *Email can't be changed</p>				
+				<br/><br/>
+				
+				<div ng-if="editForm.phoneIn.$invalid || editForm.fnameIn.$invalid || editForm.lnameIn.$invalid" style="color:#FF4A44;">All form fields must be complete</div>
+
 				<br/>
-				<br/>
-				<a id="submitter" type="submit" style="cursor:pointer; margin-left:57px;" ng-click="editUser(changedUser)" ng-hide="editForm.phoneIn.$invalid || editForm.fnameIn.$invalid || editForm.lnameIn.$invalid" onclick="alert('Success!');">Submit</a>
-				<a style="cursor:pointer; margin-left:10px;" ui-sref="UserProfile({id: usersList[selectedUser]._id})">Cancel</a>
+				<div class="transBtn">
+				<a id="submitter" type="submit" style="cursor:pointer;" ng-click="editUser(changedUser)" ng-hide="editForm.phoneIn.$invalid || editForm.fnameIn.$invalid || editForm.lnameIn.$invalid">Submit    </a>
+				<a style="cursor:pointer;" ui-sref="UserProfile({id: usersList[selectedUser]._id})">Cancel</a>
+				</div>
 
 				
 				
