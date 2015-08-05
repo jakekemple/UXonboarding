@@ -3,12 +3,12 @@ UsersApp.directive('listUsers', function() {
     restrict: 'E',
     replace: true,
     templateUrl: '../../partials/userslist.html'
-    //scope: {
-    //usersList: '=',
-     //userB: '=',
-   //selectedUser: '=',
-   //  profilePopulate: '&'
-   //} 
+    /*scope: {
+      usersList: '=',
+      userB: '=',
+      selectedUser: '=',
+      profilePopulate: '&'
+   }*/
   };
 });
 
@@ -18,12 +18,12 @@ UsersApp.directive('userProfile', function() {
     restrict: 'E',
     replace: true,
     templateUrl: '../../partials/userprofile.html',
-    //scope: {
-     // userA: '@',
-    //selectedUser: '=',
-     // usersList: '=',
-     // deleteUser: '&'
-    //}
+    /*scope: {
+      userA: '@',
+      selectedUser: '=',
+      usersList: '=',
+      deleteUser: '&'
+    }*/
   };
 });
 
@@ -38,7 +38,7 @@ UsersApp.directive('userEdit', function() {
       selectedUser: '=',
       currentUser: '=',
       usersList: '=',
-     editUser: '&'
+      editUser: '&'
     }
   };
 });
@@ -50,9 +50,9 @@ UsersApp.directive('addUser', function() {
     replace: true,
     templateUrl: '../../partials/adduser.html',
     scope: {
-     newUser: '=',
-    //usersList: '=',
-     addNew: '&'
+      newUser: '=',
+      usersList: '=',
+      addNew: '&'
     }
   };
 });
