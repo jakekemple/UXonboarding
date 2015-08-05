@@ -1,5 +1,5 @@
 
-<div ng-controller="UserEditController">
+<div>
 
 	<div class="userInfo" id="usernameDiv">
 		<h2 id="username">Edit User: {{ usersList[selectedUser].firstName }}</h2>
@@ -8,7 +8,7 @@
 	<div class="userInfo">
 		<div id="listInfo">
 			
-			<form ng-controller="UserEditController" name="editForm">
+			<form name="editForm">
 				<p class="userData">First Name: <input name="fnameIn" placeholder= "{{ usersList[selectedUser].firstName }}" ng-model="changedUser.firstName" required></input></p>
 
 				<p class="userData">Last Name: <input name="lnameIn" placeholder= "{{ usersList[selectedUser].lastName }}" ng-model="changedUser.lastName" required></input></p>
@@ -25,8 +25,6 @@
 				<a id="submitter" type="submit" style="cursor:pointer;" ng-click="editUser(changedUser)" ng-hide="editForm.phoneIn.$invalid || editForm.fnameIn.$invalid || editForm.lnameIn.$invalid">Submit    </a>
 				<a style="cursor:pointer;" ui-sref="UserProfile({id: usersList[selectedUser]._id})">Cancel</a>
 				</div>
-
-				
 				
 			</form>
 

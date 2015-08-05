@@ -1,9 +1,9 @@
 'use strict';
 
-var theService = angular.module('theService', ['ngResource']);
+var restServices = angular.module('restServices', ['ngResource']);
 
 //SERVICES ---------------------------------------
-theService.factory('dataResources', [ '$resource', function($resource) {
+restServices.factory('dataResources', [ '$resource', function($resource) {
 
   return $resource('http://localhost:24149/users/:id', {id: "@_id"}, {
     query: {method:'GET', params:{idnum: '@id'}, isArray:true},
@@ -15,7 +15,7 @@ theService.factory('dataResources', [ '$resource', function($resource) {
 }]);
 
 
-theService.service('userService', function(dataResources, $stateParams) {
+restServices.service('userService', function(dataResources, $stateParams) {
 
 var selectedUser = -1;
 
@@ -25,3 +25,5 @@ return {
     }
 
 });
+
+

@@ -1,7 +1,6 @@
 
-
 //CONTROLLERS ---------------------------------------
-UsersApp.controller('UserListController', [ '$scope', 'userService', function($scope, userService, $stateParams) {  
+UsersApp.controller('userListController', [ '$scope', 'userService', 'dataResources', function($scope, userService, dataResources, $stateParams) {  
 
       var selectedUser = userService.selectedUser;
       $scope.usersList = userService.usersList;
@@ -14,7 +13,7 @@ UsersApp.controller('UserListController', [ '$scope', 'userService', function($s
 }]);
 
 
-UsersApp.controller('UserProfileController', [ '$scope', '$state', '$stateParams', 'userService', 'dataResources',  function($scope, $state, $stateParams, userService, dataResources) {  
+UsersApp.controller('userProfileController', [ '$scope', '$state', '$stateParams', 'userService', 'dataResources',  function($scope, $state, $stateParams, userService, dataResources) {  
 
   if(userService.selectedUser == -1){
     $state.go('List');
@@ -33,7 +32,7 @@ UsersApp.controller('UserProfileController', [ '$scope', '$state', '$stateParams
 }]);
 
 
-UsersApp.controller('UserEditController', function($scope, $state, $stateParams, $window, dataResources, userService) {  
+UsersApp.controller('userEditController', function($scope, $state, $stateParams, $window, dataResources, userService) {  
 
       if(userService.selectedUser == -1){
         $state.go('List');
@@ -60,10 +59,9 @@ UsersApp.controller('UserEditController', function($scope, $state, $stateParams,
 });
 
 
-UsersApp.controller('AddUserController', function($scope, $window, $state, dataResources, userService) {  
-
-
-  $scope.addNew = function addNew(newUser) {
+UsersApp.controller('addUserController', function($scope, $window, $state, dataResources, userService) {  
+    
+  $scope.addNew = function(newUser) {
 
     $scope.usersList = userService.usersList;
 
@@ -72,8 +70,7 @@ UsersApp.controller('AddUserController', function($scope, $window, $state, dataR
       });
 
       $state.go("List");
-
-
   };
-    
+
 });
+

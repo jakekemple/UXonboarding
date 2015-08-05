@@ -1,7 +1,8 @@
 'use strict';
 
 //MODULE ---------------------------------------
-var UsersApp = angular.module('UsersApp', ['ui.router', 'theService']);
+var UsersApp = angular.module('UsersApp', ['ui.router', 'restServices']);
+
 
 
 //ROUTING ---------------------------------------
@@ -13,27 +14,29 @@ UsersApp.config(function($stateProvider, $urlRouterProvider) {
       
       .state('UserProfile', {
         url: "/UserProfile/:id",
-        templateUrl: '../partials/userprofile.html',
+        template: "<user-profile user-A='userA' selected-User='selectedUser' users-List='usersList' delete-User='deleteUser(userA)'></user-profile>",
+        controller: "userProfileController"
       })
 
       .state('UserEdit', {
         url: "/Edit/:id",
-        templateUrl: '../partials/editprofile.html',
+        template: "<user-edit changed-User='changedUser' selected-User='selectedUser' current-User='currentUser' users-List='usersList' edit-User= 'editUser(changedUser)'></user-edit>",
+        controller: "userEditController"
       })
 
       .state('List', {
-        url: '/List',
-        templateUrl: '../partials/userslist.html',
+        url: "/List",
+        template: "<list-users user-B='userB' users-List='usersList'></list-users>",
+        controller: "userListController"
       })
 
       .state('AddUser', {
-        url: '/Add',
-        templateUrl: '../partials/adduser.html',
+        url: "/Add",
+        template: "<add-user new-User='newUser' users-List='usersList' add-New='addNew(newUser)'></add-user>",
+        controller: "addUserController"
       })
 
 });
-
-
 
 
 
