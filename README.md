@@ -1,10 +1,10 @@
 # UX Onboarding Intern Project
 ## A Generic User Management Application
 
+
 ![User Profile App](https://raw.githubusercontent.com/jakekemple/UXonboarding/angularjs/appView.png)
 
 This App allows for load-free, viewing of a users list, profiles of each user, and appropriate modification capabilities
-
 
 ### Languages/Tools/Dependencies 
 - HTML/CSS/jQuery
@@ -12,13 +12,6 @@ This App allows for load-free, viewing of a users list, profiles of each user, a
 - NPM/Node.js
 - Grunt
 - MongoDB
-<<<<<<< HEAD
-
-
-###What works now:
-
-Page layout(html/css), jquery minimize, 'grunt connect' works to create local server instance, Node/NPM installed, &amp; angular library installed as dependency
-
 - Karma/Protractor/Jasmine
 
 
@@ -34,12 +27,10 @@ Page layout(html/css), jquery minimize, 'grunt connect' works to create local se
 - Open another terminal instance &amp; change directory to the project directory
 - run the command "grunt connect"
 - A live demo should be open in your browser
->>>>>>> refactoring
 
 ###To Run Unit Tests:
 - In terminal from the project root folder, run "node_modules/.bin/karma start karma.conf.js"
 - View Passed Tests
 
 
-### NOTE: Still in developmental stages
-
+### NOTE: Still in end-to-end testing phase
