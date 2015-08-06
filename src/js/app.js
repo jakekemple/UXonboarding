@@ -14,7 +14,7 @@ UsersApp.config(function($stateProvider, $urlRouterProvider) {
       
       .state('UserProfile', {
         url: "/UserProfile/:id",
-        template: "<user-profile user-A='userA' selected-User='selectedUser' users-List='usersList' delete-User='deleteUser(userA)'></user-profile>",
+        template: "<user-profile user-A='userA' selected-User='selectedUser' users-List='usersList' delete-User='deleteUser(usersList[selectedUser])'></user-profile>",
         controller: "usersAppController"
       })
 

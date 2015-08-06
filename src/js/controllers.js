@@ -21,13 +21,14 @@ UsersApp.controller('usersAppController', ['$scope', '$rootScope', 'userService'
     }
 
     $scope.deleteUser = function (userA) { 
-      userService.usersList.splice($scope.selectedUser, 1);  
-      dataResources.remove({ id: $scope.usersList[$scope.selectedUser]._id })
+      var index = userService.usersList.indexOf(userA);
+      userService.usersList.splice(index, 1);  
+      dataResources.remove({ id: userA._id });
     }
 
     $scope.editUser = function editUser(changedUser) {
       changedUser.email = $scope.usersList[$scope.selectedUser].email;
-      changedUser._id = $scope.usersList[$scope.selectedUser]._id;
+      changedUser._id = $scope.usersList[userService.selectedUser]._id;
       $scope.currentUser = changedUser;
 
       dataResources.update({ id: $scope.currentUser._id } ,$scope.currentUser).$promise.then(function(results) {
