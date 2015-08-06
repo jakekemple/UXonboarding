@@ -13,7 +13,7 @@
 				<input name="fname" type="text" placeholder= "First Name" ng-model="newUser.firstName" capitalize-first required></input><br/>
 				<input name="lname" type="text" placeholder= "Last Name" ng-model="newUser.lastName" required></input><br/>
 				<p for="phoneIn" style="font-size:1em; margin-left:370px;"><input id="phoneIn" name="phoneIn" type="tel" placeholder= "Phone Number" ng-model="newUser.phone" pattern="^\d{3}-\d{3}-\d{4}$" required></input> *Phone# Format: XXX-XXX-XXXX</p>
-				<p for="mailIn" style="font-size:1em; margin-left:280px;"><input name="mailIn" type="email" placeholder= "Email" style="margin-left:5px;" ng-model="newUser.email" required></input> *Email Format: __@__.__</p>
+				<p for="mailIn" style="font-size:1em; margin-left:280px;"><input name="mailIn" type="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" placeholder= "Email" style="margin-left:5px;" ng-model="newUser.email" required></input> *Email Format: __@__.__</p>
 				
 				<input id="realInput" style="" type="reset" value="Reset" href=""/>
 				<br/>

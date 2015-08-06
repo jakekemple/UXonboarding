@@ -3,12 +3,6 @@ UsersApp.directive('listUsers', function() {
     restrict: 'E',
     replace: true,
     templateUrl: '../../partials/userslist.html'
-    /*scope: {
-      usersList: '=',
-      userB: '=',
-      selectedUser: '=',
-      profilePopulate: '&'
-   }*/
   };
 });
 
@@ -18,12 +12,12 @@ UsersApp.directive('userProfile', function() {
     restrict: 'E',
     replace: true,
     templateUrl: '../../partials/userprofile.html',
-    /*scope: {
-      userA: '@',
+    scope: {
+      userA: '=',
       selectedUser: '=',
       usersList: '=',
       deleteUser: '&'
-    }*/
+    }
   };
 });
 

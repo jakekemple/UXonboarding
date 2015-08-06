@@ -1,4 +1,4 @@
-'use strict';
+
 
 //MODULE ---------------------------------------
 var UsersApp = angular.module('UsersApp', ['ui.router', 'restServices']);
@@ -8,7 +8,7 @@ var UsersApp = angular.module('UsersApp', ['ui.router', 'restServices']);
 //ROUTING ---------------------------------------
 UsersApp.config(function($stateProvider, $urlRouterProvider) {
     
-    //$urlRouterProvider.otherwise('/List');
+    $urlRouterProvider.otherwise('/List');
 
     $stateProvider
       
@@ -28,7 +28,6 @@ UsersApp.config(function($stateProvider, $urlRouterProvider) {
         url: "/List",
         template: "<list-users user-B='userB' users-List='usersList'></list-users>",
         controller: "usersAppController"
-        // selected-User='selectedUser'  profile-Populate='profilePopulate(user)'
       })
 
       .state('AddUser', {
