@@ -2,7 +2,7 @@
 ## A Generic User Management Application
 
 
-![User Profile App](https://raw.githubusercontent.com/jakekemple/UXonboarding/angularjs/appView.png)
+![User Profile App](https://raw.githubusercontent.com/jakekemple/UXonboarding/master/appView.png)
 
 This App allows for load-free, viewing of a users list, profiles of each user, and appropriate modification capabilities
 
