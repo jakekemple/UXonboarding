@@ -1,0 +1,25 @@
+
+<div>
+
+	<h2 style="display:table; width:35%; position:relative; font-family:sans-serif;">Users:</h2>
+	
+	<div class="userInfo">
+		<br/>
+
+		<div id="listInfo">
+			
+			<ul style="list-style-type: none;">
+				<li ng-repeat="user in usersList">
+				
+					<p class="userData"><a style="cursor:pointer;" ng-click="profilePopulate(user)" ng-model="user.firstName" ui-sref="UserProfile({id: user._id})">{{ user.firstName }} {{ user.lastName }}</a></p>
+					<br/>
+
+				</li>
+			</ul>
+
+		</div>
+	
+
+	</div>
+
+</div>

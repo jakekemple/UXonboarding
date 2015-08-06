@@ -1,0 +1,29 @@
+<div>
+
+	<div class="userInfo" id="usernameDiv">
+		<h2 id="username">{{ usersList[selectedUser].firstName }}<img ng-click="infoToHide = !infoToHide" src="images/plus.png" style="position:absolute; padding-left:15px; width:28px; color:white;"></h2>
+	</div>
+
+	<div class="userInfo" ng-hide="infoToHide">
+		
+	<div id="listInfo">
+
+		<p class="userData">First Name: {{ usersList[selectedUser].firstName }}</p>
+		<p class="userData">Last Name: {{ usersList[selectedUser].lastName }}</p>
+		<p class="userData">Phone: {{ usersList[selectedUser].phone }}</p>
+		<p class="userData">Email: {{ usersList[selectedUser].email }}</p>
+
+	</div>
+
+		<br/><br/>
+
+	<div class="transBtn">
+		<a class="userProfBtn" style="cursor:pointer; margin-left:3px; " ui-sref="UserEdit({id: usersList[selectedUser]._id})">Edit User</a>
+		
+		<a class="userProfBtn" ng-click="deleteUser(usersList[selectedUser])" ui-sref="List" style="padding-left:40px; cursor:pointer; ">Delete User</a>
+	</div>
+
+	</div>
+
+</div>
+

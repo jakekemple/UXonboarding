@@ -1,0 +1,154 @@
+*{
+  padding:5px;
+  margin: 0;
+}
+
+html{
+
+  background-color: #F4FBFF;
+  color: #6A98B2;
+  min-width: 1610px;
+
+}
+
+li, ul{
+  padding:0;
+  margin: :0;
+}
+
+.greyMat{
+  background-color: #4C4C4A;
+  border-radius: 15px;
+}
+
+a{
+  text-decoration: none;
+  color:#6A98B2;
+  transition: .5s all;
+}
+
+
+
+a:hover{
+  font-size: 1.8em;
+}
+
+div.userInfo a {
+  -webkit-transition: .5s all;
+}
+
+div.userInfo a:hover {
+  font-size: 1.8em;
+}
+
+h1{
+  font-size: 1.5em;
+  right:0;
+  text-align: left;
+  font-family: sans-serif;
+
+}
+
+h2{
+  font-size: 2em;
+}
+
+.userInfo{
+  display: table;
+  position: relative;
+  font-family: sans-serif;
+
+
+}
+
+#usernameDiv{
+
+  cursor: pointer;
+}
+
+#listInfo{
+
+  text-align: left;
+  display: inline-block;
+  font-size: 1.5em;
+}
+
+.transBtn{
+  font-size: 1.7em;
+}
+
+.userData{
+  
+}
+
+#injectionView{
+  height:700px;
+  width:65%;
+  overflow:auto;
+  padding: 0;
+
+  float:left;
+  border:none;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+input {
+  font-family: sans-serif;
+  font-size: .7em;
+    border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: #4C4C4A;
+    margin: 0 0 10px 0;
+    color: #6A98B2;
+}
+
+input:focus { color: #6A98B2; }
+
+
+input:required:valid, input:focus:valid {
+  /* insert your own styles for invalid form input */
+      -webkit-box-shadow: 
+      inset 0 0 8px  green,
+            0 0 16px green; 
+    -moz-box-shadow: 
+      inset 0 0 8px  green,
+            0 0 16px green; 
+    box-shadow: 
+      inset 0 0 8px  green,
+            0 0 16px green; 
+}
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #6A98B2;
+    opacity:  .5;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #6A98B2;
+   opacity:  .5;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #6A98B2;
+   opacity:  .5;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #6A98B2;
+   opacity:  .5;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+::-moz-selection { background: white; }
+::selection { background: white; }
