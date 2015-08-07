@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       '<%= paths.private %>images/**/*'
     ],    
     partials: [
-      '<%= paths.private %>partials/**/*'
+      '<%= paths.private %>partials/**/*.html'
     ],
     dependencies : {
       js: [
@@ -37,10 +37,6 @@ module.exports = function(grunt) {
   grunt.initConfig({
     paths: paths,
     pkg: grunt.file.readJSON('package.json'),
-    clean: {
-      start: ['<%= paths.public %>'],
-      end: ['<%= paths.public %>']
-    },
     copy: {
       main: {
         files: [
@@ -81,21 +77,26 @@ module.exports = function(grunt) {
     connect : {
       server: {
           options: {
-          keepalive: true,
           protocol: 'http',
           port: 8080,
-          open: true,
+          //open: true,
           base: paths.public
         }
       }
     },
 
+    watch: {
+      src: {
+      files: [files.js, files.css, files.partials, files.images, 'src/partials/*html', 'src/index.html'],
+      tasks:['concat', 'copy']}
+    }
+
   });
 
-  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['clean:start', 'clean:end', 'concat',  'copy', 'connect']);
+  grunt.registerTask('default', ['concat', 'copy', 'connect', 'watch']);
 };
