@@ -19,10 +19,7 @@ beforeEach(function() {
 		dataResources = _dataResources_;
 
 
-		UserListController = $controller("UserListController", {$scope: $scope});
-		UserProfileController = $controller("UserProfileController", {$scope: $scope});
-		UserEditController = $controller("UserEditController", {$scope: $scope});
-		AddUserController = $controller("AddUserController", {$scope: $scope});				
+		usersAppController = $controller("usersAppController", {$scope: $scope});			
 	});
 
 });
@@ -44,7 +41,6 @@ afterEach(function() {
 
 			it('Should do GET request from server', function() {
 				$httpBackend.expect('GET', 'http://localhost:24149/users').respond(users);
-				$httpBackend.expect('GET', '../partials/userslist.html').respond();
 				userService.usersList;
 				$httpBackend.flush();
 				expect($scope.usersList[0]._id).toEqual(user._id);
@@ -58,6 +54,7 @@ afterEach(function() {
 
 	describe('Factory', function() {
 
+		//-----------------------------------------------------------------------------------
 
 		describe('PUT Request & editUser() Test', function() {
 
@@ -84,9 +81,6 @@ afterEach(function() {
 				$scope.newuserEditTest = {_id, firstName, lastName, phone, email};
 
 				$httpBackend.expect('PUT', 'http://localhost:24149/users/1').respond();
-
-				$httpBackend.expect('GET', '../partials/userslist.html').respond();
-				$httpBackend.expect('GET', '../partials/userprofile.html').respond();
 				
 				$scope.editUser($scope.newuserEditTest);
 				
@@ -103,16 +97,15 @@ afterEach(function() {
 
 		describe('POST Request & addUser() Test', function() {
 
-			beforeEach(function() {
-				$httpBackend.whenPOST('http://localhost:24149/users/:id');
-			});
+		beforeEach(function() {
+			$httpBackend.whenPOST('http://localhost:24149/users/:id');
+		});
 
 		it('Should do POST request to server', function() {
 			
 			$httpBackend.expect('GET', 'http://localhost:24149/users').respond();
-
 			$httpBackend.expect('POST', 'http://localhost:24149/users/2').respond();
-			$httpBackend.expect('GET', '../partials/userslist.html').respond();
+
 			$scope.addNew(user2);
 			$httpBackend.flush();
 			expect($scope.usersList[0].firstName).toEqual(user2.firstName);
@@ -139,7 +132,7 @@ afterEach(function() {
 				dump("DELETE SUCCESS: usersList size went from " + $scope.usersList.length);
 				
 				$httpBackend.expect('DELETE', 'http://localhost:24149/users/1').respond();
-				$httpBackend.expect('GET', '../partials/userslist.html').respond();
+				//$httpBackend.expect('GET', '../partials/userslist.html').respond();
 				$scope.deleteUser(user);
 				$httpBackend.flush();
 				dump("to " + $scope.usersList.length);
@@ -148,10 +141,11 @@ afterEach(function() {
 
 		});
 
+		//-----------------------------------------------------------------------------------
 	});
 
 
-	describe('UserListController: Selected User Test', function() {
+	describe('Selected User Test', function() {
 		
 		beforeEach(function() {
 			$httpBackend.whenGET('../partials/userslist.html').respond();
@@ -164,7 +158,7 @@ afterEach(function() {
 			$scope.usersList[1] = user2;
 			
 			$httpBackend.expect('GET', 'http://localhost:24149/users').respond();
-			$httpBackend.expect('GET', '../partials/userslist.html').respond();
+
 			$scope.profilePopulate(user2);
 			$httpBackend.flush();
 
@@ -174,4 +168,4 @@ afterEach(function() {
 		});
 	});
 
-	//FUNCTION TESTS --------------------------------------------------------------------------------
+

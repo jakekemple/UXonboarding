@@ -1,65 +1,86 @@
 // endTests.js
-describe('UsersApp', function() {
 
-	beforeEach(function() {
-		browser.get('http://0.0.0.0:8080');
-	});
+describe('UsersApp E2E Tests: ', function() {
+  
+  var restMocks;
 
-  	it('Should have a title', function() {
-    	browser.get('http://0.0.0.0:8080');
-    	appTitle = browser.getTitle();
-    	expect(appTitle).toEqual('User Profile');
-    	//console.log(appTitle);
-  	});
+  //Feed each test restMocks
+  beforeEach(function() {
+      restMocks = require('./endMocks');
+      browser.addMockModule('restMocks', restMocks.e2eMocks);
+  });
 
-  	describe('Url tests', function() {
-  		it('Should direct to User List', function() {
-  			
-  		});
-  	});
 
-  	/*
+  //-----------------------Delay Tests for Readability----------------------
+  var origFn = browser.driver.controlFlow().execute;
 
-  	describe('tests for ng-show and ng-hide', function() {
-		it('should show user info and collapse listInfo onclick', function() {
-			element.all(by.className('userRow')).first().click();
-			expect(element.all(by.className('userRow')).first().isDisplayed()).toBeTruthy();
-			expect(element(by.className('listInfo')).isDisplayed()).toBeFalsy();
-		});
+  browser.driver.controlFlow().execute = function() {
+    var args = arguments;
 
-		it('should close user info and show listInfo onclick of close button', function() {
-			element.all(by.className('userRow')).first().click();
-			element(by.id('minButton')).click();
-			expect(element(by.className('profileBox')).isDisplayed()).toBeFalsy();
-			expect(element(by.className('listInfo')).isDisplayed()).toBeTruthy();
-		});
-	});
+    origFn.call(browser.driver.controlFlow(), function() {
+      return protractor.promise.delayed(150);
+    });
 
-	describe('tests for ui-router', function() {
-		it('should initially load to list state', function() {
-			expect(browser.getCurrentUrl()).toContain('list');
-		});
+    return origFn.apply(browser.driver.controlFlow(), args);
+  };
+  //------------------------------------------------------------------------
 
-		it('should switch to new state onclick of createButton, and go back to list state onclick of cancelBtn', function() {
-			element(by.className('createButton')).click();
-			expect(browser.getCurrentUrl()).toContain('new');
-			element(by.id('cancelBtn')).click();
-			expect(browser.getCurrentUrl()).toContain('list');
-		});
 
-		it('should switch to edit state onclick of editButton, and go back to list state onclick of cancelBtn', function() {
-			element.all(by.className('editButton')).first().click();
-			expect(browser.getCurrentUrl()).toContain('edit');
-			element.all(by.id('cancelBtn')).first().click();
-			expect(browser.getCurrentUrl()).toContain('list');
-		});
+  describe('AddUser Test', function() {
+    it('Should Add User to List of Users', function() {
+      
+      browser.get('http://0.0.0.0:8080');
+      element(by.uiSref('AddUser')).click();
 
-		it('should switch to edit state onclick of editBtnLeft', function() {
-			element.all(by.className('userRow')).first().click();
-			element(by.id('editBtnLeft')).click();
-			expect(browser.getCurrentUrl()).toContain('edit');
-		});
+      element(by.name('fname')).sendKeys('New');
+      element(by.name('lname')).sendKeys('Guy');
+      element(by.name('phoneIn')).sendKeys('000-000-0000');
+      element(by.name('mailIn')).sendKeys('nguy@test.com');
 
-	}); */
+      element(by.name('addSubmitter')).click();
+    });
+  });
+
+
+  describe('Route Navigating', function() {
+    it('Should Navigate To List of Users', function() {
+      element(by.uiSref('List')).click();
+    });
+  });
+
+  describe('Select & Delete User', function() {
+    it('Should select first user and delete them from list', function() {
+      element(by.uiSref('UserProfile({id: user._id})')).click();
+
+      element(by.name('deleter')).click();
+    });
+  });
+
+
+  describe('Route Navigating', function() {
+    it('Should Navigate To List of Users', function() {
+      element(by.uiSref('List')).click();
+    });
+  });
+
+  describe('Select & Edit User', function() {
+    it('Should select first user and edit them', function() {
+      element(by.uiSref('UserProfile({id: user._id})')).click();
+
+      element(by.name('editor')).click();
+
+      element(by.name('fnameIn')).sendKeys('John');
+      element(by.name('lnameIn')).sendKeys('Changed');
+      element(by.name('ephoneIn')).sendKeys('111-444-4444');
+
+      element(by.name('editSubmitter')).click();      
+    });
+  });
+
+  describe('Route Navigating', function() {
+    it('Should Navigate To List of Users', function() {
+      element(by.uiSref('List')).click();
+    });
+  });
 
 });

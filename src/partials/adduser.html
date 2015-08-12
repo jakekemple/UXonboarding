@@ -20,7 +20,7 @@
 
 				<div ng-if="addForm.phoneIn.$invalid || addForm.fname.$invalid || addForm.lname.$invalid || addForm.mailIn.$invalid" style="color:#FF4A44;">All form fields must be complete</div>
 
-				<a type="submit"  style="cursor:pointer; margin-left:-5px;" id="submitBtn" ng-click="addNew(newUser)" ng-hide="addForm.phoneIn.$invalid || addForm.fname.$invalid || addForm.lname.$invalid || addForm.mailIn.$invalid">Submit</a>
+				<a type="submit" name="addSubmitter" style="cursor:pointer; margin-left:-5px;" id="submitBtn" ng-click="addNew(newUser)" ng-hide="addForm.phoneIn.$invalid || addForm.fname.$invalid || addForm.lname.$invalid || addForm.mailIn.$invalid">Submit</a>
 			</form>
 
 		</div>

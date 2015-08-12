@@ -28,7 +28,7 @@ UsersApp.controller('usersAppController', ['$scope', '$rootScope', 'userService'
 
     $scope.editUser = function editUser(changedUser) {
       changedUser.email = $scope.usersList[$scope.selectedUser].email;
-      changedUser._id = $scope.usersList[userService.selectedUser]._id;
+      changedUser._id = $scope.usersList[$scope.selectedUser]._id;
       $scope.currentUser = changedUser;
 
       dataResources.update({ id: $scope.currentUser._id } ,$scope.currentUser).$promise.then(function(results) {
