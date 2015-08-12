@@ -13,7 +13,7 @@
 
 				<p class="userData">Last Name: <input name="lnameIn" placeholder= "{{ usersList[selectedUser].lastName }}" ng-model="changedUser.lastName" required></input></p>
 				
-				<p style="margin-left:46px;" class="userData">Phone: <input name="phoneIn" type="tel" pattern="^\d{3}-\d{3}-\d{4}$" placeholder= "{{ usersList[selectedUser].phone }}" ng-model="changedUser.phone" required="required"></input> *Format: XXX-XXX-XXXX</p>
+				<p style="margin-left:46px;" class="userData">Phone: <input name="ephoneIn" type="tel" pattern="^\d{3}-\d{3}-\d{4}$" placeholder= "{{ usersList[selectedUser].phone }}" ng-model="changedUser.phone" required="required"></input> *Format: XXX-XXX-XXXX</p>
 
 				<p style="margin-left:55px;" class="userData">Email: <input name="mailIn" readonly="readonly" placeholder="{{ usersList[selectedUser].email }}" style=" width:180px; border:none; box-shadow:none; -webkit-box-shadow:none; font-size:1em;"></input> *Email can't be changed</p>				
 				<br/><br/>
@@ -22,7 +22,7 @@
 
 				<br/>
 				<div class="transBtn">
-				<a id="submitter" type="submit" style="cursor:pointer;" ng-click="editUser(changedUser)" ng-hide="editForm.phoneIn.$invalid || editForm.fnameIn.$invalid || editForm.lnameIn.$invalid">Submit    </a>
+				<a name="editSubmitter" id="submitter" type="submit" style="cursor:pointer;" ng-click="editUser(changedUser)" ng-hide="editForm.phoneIn.$invalid || editForm.fnameIn.$invalid || editForm.lnameIn.$invalid">Submit    </a>
 				<a style="cursor:pointer;" ui-sref="UserProfile({id: usersList[selectedUser]._id})">Cancel</a>
 				</div>
 

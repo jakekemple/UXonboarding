@@ -8,6 +8,10 @@ exports.config = {
 		'browserName': 'chrome'
 	},
 
+  	onPrepare: function () { 
+    	require('protractor-uisref-locator')(protractor);
+  	}, 
+
 	jasmineNodeOpts: {
 		showColors: true,
 		defaultTimeoutInterval: 30000

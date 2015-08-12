@@ -20,7 +20,7 @@ UsersApp.config(function($stateProvider, $urlRouterProvider) {
 
       .state('UserEdit', {
         url: "/Edit/:id",
-        template: "<user-edit changed-User='changedUser' selected-User='selectedUser' current-User='currentUser' users-List='usersList' edit-User= 'editUser(changedUser)'></user-edit>",
+        template: "<user-edit changed-User='changedUser' selected-User='selectedUser' current-User='currentUser' users-List='usersList' edit-User='editUser(changedUser)'></user-edit>",
         controller: "usersAppController"
       })
 
