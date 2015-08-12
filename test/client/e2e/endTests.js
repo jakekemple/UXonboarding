@@ -18,7 +18,7 @@ describe('UsersApp E2E Tests: ', function() {
     var args = arguments;
 
     origFn.call(browser.driver.controlFlow(), function() {
-      return protractor.promise.delayed(400);
+      return protractor.promise.delayed(150);
     });
 
     return origFn.apply(browser.driver.controlFlow(), args);
