@@ -32,7 +32,7 @@ Load free user management application. Features include viewing the list of all 
   within the UXonboarding project directory
   
 - Finally, run 
-		`grunt connect`
+		`grunt`
   within the UXonboarding project directory
   
 - A live demo should open in your browser
