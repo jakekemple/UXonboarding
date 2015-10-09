@@ -79,7 +79,8 @@ module.exports = function(grunt) {
           options: {
           protocol: 'http',
           port: 8080,
-          //open: true,
+          open: true,
+          keepalive: true,
           base: paths.public
         }
       }
