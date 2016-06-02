@@ -2,7 +2,7 @@
 ## A Generic User Management Application
 
 
-![User Profile App](https://raw.githubusercontent.com/jakekemple/UXonboarding/uxappView.png)
+![User Profile App](https://raw.githubusercontent.com/jakekemple/UXonboarding/master/uxappView.png?token=AIe0U2RaS5yxIaebtVai_SiNgT7H90LLks5XWSnuwA%3D%3D)
 
 Load free user management application. Features include viewing the list of all users, profiles of each user, and the ability to add & edit users
 
